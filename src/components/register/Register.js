@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FormInput from '../form-input/FormInput';
-import Button from '../button/Button';
+import CustomButton from '../custom-button/CustomButton';
 import { auth, createUserProfileDocument } from '../../firebase/Firebase.utils';
 import './Register.styles.scss';
 
@@ -83,7 +83,7 @@ export class Register extends Component {
             label='Confirm Password'
             required
           />
-          <Button type='submit'>Sign Up!</Button>
+          <CustomButton type='submit'>Sign Up!</CustomButton>
         </form>
       </div>
     );
