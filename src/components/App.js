@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { auth, createUserProfileDocument } from '../firebase/Firebase.utils';
+import {
+  auth,
+  createUserProfileDocument,
+} from '../firebase/Firebase.utils';
 import { setCurrentUser } from '../redux/user/user-actions';
 import { selectCurrentUser } from '../redux/user/user-selectors';
 import '../App.scss';
@@ -33,9 +36,8 @@ class App extends Component {
             },
           });
         });
-      } else {
-        setCurrentUser(userAuth);
       }
+      setCurrentUser(userAuth);
     });
   }
 
