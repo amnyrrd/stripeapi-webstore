@@ -25,20 +25,24 @@ export function* signUp({ payload: { email, password, displayName } }) {
 }
 
 export function* onSignUpStart() {
-  yield takeLatest(userActionTypes.SIGN_UP_START, signUp)
+  yield takeLatest(userActionTypes.SIGN_UP_START, signUp);
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalData }}) {
-  yield getSnapshotFromUserAuth(user, additionalData)
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
+  yield getSnapshotFromUserAuth(user, additionalData);
 }
 
 export function* onSignUpSuccess() {
-  yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp)
+  yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
+    const userRef = yield call(
+      createUserProfileDocument,
+      userAuth,
+      additionalData
+    );
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
@@ -106,6 +110,6 @@ export function* userSagas() {
     call(onCheckUserSession),
     call(onSignOutStart),
     call(onSignUpStart),
-    call(onSignUpSuccess)
+    call(onSignUpSuccess),
   ]);
 }

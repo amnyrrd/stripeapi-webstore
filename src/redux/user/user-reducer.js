@@ -1,4 +1,3 @@
-import cartActionTypes from '../cart/cart-types';
 import userActionTypes from './user-types';
 
 const INITIAL_STATE = {
