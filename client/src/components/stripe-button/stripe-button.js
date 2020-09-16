@@ -1,6 +1,6 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
-import { browserHistory } from 'react-router-dom'
+import { history } from '../../history';
 import axios from 'axios';
 
 const StripeCheckoutButton = ({ price }) => {
