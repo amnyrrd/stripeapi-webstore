@@ -1,5 +1,6 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { browserHistory } from 'react-router-dom'
 import axios from 'axios';
 
 const StripeCheckoutButton = ({ price }) => {
@@ -19,7 +20,7 @@ const StripeCheckoutButton = ({ price }) => {
       .then((resp) => {
         alert('Payment successful!');
       })
-      .then(resp.redirect('/'))
+      .then(history.push('/'))
       .catch((err) => {
         console.log('Payment error: ', JSON.parse(err));
         alert(
