@@ -1,6 +1,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import {clearCart} from '../../redux/cart/cart-actions'
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
@@ -19,6 +20,7 @@ const StripeCheckoutButton = ({ price }) => {
       .then((resp) => {
         alert('Payment successful!');
       })
+      .then(() => clearCart)
       .catch((err) => {
         console.log('Payment error: ', JSON.parse(err));
         alert(
